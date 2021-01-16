@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>preventDefault & stopPropagation</title>
+</head>
+<body>
+<h1>preventDefault</h1>
+
+    <h2>Définition et emploi</h2>
+
+    <p>La méthode <mark>preventDefault()</mark>annule l'événement quand c'est possible, ce qui signifie que l'action déclenchée par défaut par l'événement ne se produira pas.</p>
+
+    <p>Cela peut par exemple être utile&thinsp;:</p>
+    <ul>
+        <li>lors d'un clic sur un bouton de type <i>submit</i> pour l'empêcher de valider un formulaire&thinsp;;</li>
+        <li>lors d'un clic sur un lien pour empêcher le lien de suivre l'URL.</li>
+    </ul>
+
+    <p><strong>N.B.</strong>&thinsp;: Tous les événements ne sont pas annulables. On peut utiliser la propriété <code><a href="https://www.w3schools.com/jsref/event_cancelable.asp" target="_blank">cancelable</a></code> pour savoir si un événement peut être annulé.</p>
+
+    <p><strong>N.B.</strong>&thinsp;: La méthode preventDefault() n'empêche pas la propagation ultérieure d'un événement à travers le DOM. Cela est géré au moyen de la méthode <a href="#stop-propagation">stopPropagation()</a>.</p>
+
+    <h2>Exemples</h2>
+
+    <ul>
+        <li>
+            <p>Cliquer sur le lien suivant ne suivra pas l'URL vers Google&thinsp;: <a id="a1" href="https://google.com">Google</a>.</p>
+            <p class="code pre">
+    document.getElementById('a1').addEventListener('click', function(e) {
+    e.preventDefault()
+    });
+            </p>
+        </li>
+        <li>
+            <p>La <i>checkbox</i> suivante ne peut pas être cochée&thinsp;: <input type="checkbox" id="checkbox1"></p>
+            <p class="code pre">
+    document.getElementById('checkbox1').addEventListener('click', function(e) {
+        e.preventDefault()
+    });        
+            </p>
+        </li>
+    </ul>
+
+<h1 id="stop-propagation">stopPropagation</h1>
+
+    <h2>Définition et emploi</h2>
+    
+    <p>La méthode <mark>stopPropagation()</mark> empêche l'appel de la propagation d'un même événement.</p>
+
+    <p>La propagation est le fait d'affecter les éléments parents et enfants.</p>
+
+    <h2>Exemple</h2>
+
+    <p>Cliquer sur la div extérieure déclenche l'alerte "OUTER DIV". Toutefois, cliquer sur la div intérieure déclenche deux alertes&thinsp;: en premier lieu, "INNER DIV"&thinsp;; en second lieu, "OUTER DIV".</p>
+    
+    <p>Cela est la conséquence du fait que la div intérieure est placé dans la div extérieure.</p>
+
+    <p>La méthode stopPropagation() a pour effet que cliquer sur la div intérieure déclenchera uniquement l'alerte "INNER DIV".</p>
+
+    <div id="outer-div">Div extérieure
+        <div id="inner-div">Div intérieure</div>
+    </div>
+
+    <p>Arrêter la propagation&thinsp;: <input type="checkbox" id="checkbox2"></p>
+
+    <p class="code pre">
+    document.querySelector('#outer-div').addEventListener('click', function() {
+        alert('OUTER DIV');
+    });
+        
+    </p>
+    <p class="code pre">
+    document.getElementById('inner-div').addEventListener('click', function(e) {
+        alert('INNER DIV');
+        if (document.getElementById('checkbox2').checked) {
+            e.stopPropagation();
+        }
+    });
+    </p>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    width: 75%;
+    /* background-color: lightcyan; */
+}
+
+@media screen AND (max-width: 1366px) {
+    body {width: 95%}
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+    font-family: Candara, serif;
+    padding: .15em;
+}
+
+h1 {
+    background-color: limegreen;
+}
+
+h2 {
+    background-color: #fbfb8b;
+}
+
+h3 {
+    text-decoration: underline double;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+li {
+    margin: .75em auto;
+}
+
+li > p:not(.code) {
+    margin-block: .5em;
+    width: 50%;
+}
+
+mark {
+    /* background-color: rgba(0, 255, 255, 0.5); */
+    background-color: aquamarine;
+}
+
+code, .code {
+    background-color: #c8c8c8;
+    color: #333;
+    font-family: 'Lucida Console', Courier, monospace;
+}
+
+.pre {
+    white-space: pre;
+}
+
+.fit-content {width: fit-content;}
+
+.red {
+    color: red;
+}
+
+.red-bg {
+    background-color: red;
+}
+
+.expli {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.expli::before {
+    content: '↳ ';
+}
+
+blockquote {
+    quotes:'« ' ' »' '“' '”';
+    font-family: 'Segoe Script', cursive;
+}
+
+blockquote::before {
+    content: open-quote;
+}
+
+blockquote::after {
+    content: close-quote;
+}
+
+code > a, .code a {
+    text-decoration: none;
+    /* color: #000; */
+}
+
+#outer-div {
+    width: 700px;
+    height: 400px;
+    line-height: 100px;
+    background-color: darkorange;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+#inner-div {
+    width: 350px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    background-color: rgb(219, 170, 80);
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    cursor: pointer;
+}
